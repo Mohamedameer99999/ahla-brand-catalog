@@ -6591,8 +6591,8 @@ function showDetails(id){var p=products.find(function(x){return x.id===id});if(!
 function hideDetails(){document.getElementById('modal-overlay').classList.remove('show')}
 document.getElementById('modal-overlay').addEventListener('click',function(e){if(e.target===this)hideDetails()})
 rc();fp();
-var _b={},_dl=0;function loadDetails(d){for(var i in d){_b[i]=d[i]}_dl++;if(_dl>=45){for(var i in _b){var c=i.indexOf('__cont');if(c>0){var b=i.slice(0,c),e=_b[i];if(e._cont&&_b[b]){if(e.desc)_b[b].desc+=e.desc;if(e.sizes){var a=JSON.parse(_b[b].sizes||'[]'),b2=JSON.parse(e.sizes);_b[b].sizes=JSON.stringify(a.concat(b2))}}delete _b[i]}}for(var i in _b)productDetails[i]=_b[i];fp()}}
+var _b={},_dl=0;function loadDetails(d){for(var i in d)_b[i]=d[i];_dl++;if(_dl>=45){z()}}function z(){for(var i in _b){if(i.indexOf('__cont')>0){var b=i.slice(0,i.indexOf('__cont')),e=_b[i];if(e._cont&&_b[b]){if(e.desc)_b[b].desc+=e.desc;if(e.sizes){var a=JSON.parse(_b[b].sizes||'[]'),b2=JSON.parse(e.sizes);_b[b].sizes=JSON.stringify(a.concat(b2))}}}}for(var i in _b)if(i.indexOf('__cont')<0)productDetails[i]=_b[i];fp()}
 var dc=Array(45).fill().map(function(_,i){return'https://mohamedameer99999.github.io/ahla-brand-catalog/data/details_'+(i+1)+'.js'});
-dc.forEach(function(u){var s=document.createElement('script');s.src=u;document.body.appendChild(s)});</script>
+dc.forEach(function(u){var s=document.createElement('script');s.src=u;s.onerror=function(){_dl++;if(_dl>=45){z()}};document.body.appendChild(s)});</script>
 </body>
 </html>
