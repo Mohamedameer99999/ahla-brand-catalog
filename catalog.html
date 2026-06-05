@@ -77,8 +77,8 @@ body{background:#f5f6fa;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 </div>
 <div class="footer">للطلب عبر واتساب â€” <a href="https://wa.me/201093456565" target="_blank">201093456565</a></div>
 <div class="modal-overlay" id="modal-overlay"><div class="modal-box" id="modal-content"></div></div>
-<script src="https://github.com/Mohamedameer99999/ahla-brand-catalog/releases/download/v1.0/details.js"></script>
-<script>const products = [
+<script>var productDetails = {};
+const products = [
     {
         "stock":  166,
         "id":  "5062",
@@ -6590,6 +6590,7 @@ function rp(list){if(!list.length){document.getElementById("products").innerHTML
 function showDetails(id){var p=products.find(function(x){return x.id===id});if(!p)return;var d=productDetails[id]||{};var h='<span class="modal-close" onclick="hideDetails()">&times;</span><div class="modal-title">'+p.name+'</div>'+(p.enName?'<div class="modal-en">'+p.enName+'</div>':'');if(d.desc&&d.desc.length>0){h+='<div class="modal-section"><h3>'+TXT.specs+'</h3><div class="modal-desc">'+d.desc+'</div></div>'}if(d.sizes&&d.sizes.length>2){var sz=typeof d.sizes==='string'?JSON.parse(d.sizes):d.sizes;if(sz.length>0){h+='<div class="modal-section"><h3>'+TXT.sizesTitle+'</h3><table class="modal-table"><thead><tr><th>'+TXT.szSize+'</th><th>'+TXT.szColor+'</th><th>'+TXT.szStock+'</th></tr></thead><tbody>';sz.forEach(function(s){h+='<tr><td>'+s.size+'</td><td>'+s.color+'</td><td>'+s.stock+'</td></tr>'});h+='</tbody></table></div>'}}document.getElementById('modal-content').innerHTML=h;document.getElementById('modal-overlay').classList.add('show')}
 function hideDetails(){document.getElementById('modal-overlay').classList.remove('show')}
 document.getElementById('modal-overlay').addEventListener('click',function(e){if(e.target===this)hideDetails()})
-rc();fp();</script>
+rc();fp();
+(function(){var s=document.createElement('script');s.src='https://github.com/Mohamedameer99999/ahla-brand-catalog/releases/download/v1.0/details.js';s.onload=function(){fp()};document.body.appendChild(s)})();</script>
 </body>
 </html>
