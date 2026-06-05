@@ -61,7 +61,15 @@ body{background:#f5f6fa;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 .modal-table th{background:#f0f2ff;padding:10px 12px;text-align:center;font-weight:700;color:#1a1a2e;border:1px solid #e0e4ff}
 .modal-table td{padding:8px 12px;text-align:center;border:1px solid #eee}
 .modal-table tr:nth-child(even){background:#fafbfc}
-@media(max-width:600px){.products{grid-template-columns:repeat(2,1fr);gap:12px}.product-img{height:140px}.top-bar{padding:22px 15px}.top-bar h1{font-size:22px}.stat-card{padding:15px}.product-body{padding:12px}.product-price{font-size:17px}.modal-box{padding:20px;margin:10px}}</style>
+.img-wrap{position:relative;overflow:hidden;min-height:180px;background:#f5f6f8;border-radius:18px 18px 0 0}
+.stock-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.55);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;letter-spacing:3px;z-index:2;border-radius:18px 18px 0 0}
+.modal-img{width:100%;height:220px;object-fit:cover;border-radius:14px;margin-bottom:14px;background:#f5f6f8}
+.sort-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.sort-btn{padding:8px 18px;border:2px solid #e8ecf0;border-radius:50px;background:#fff;cursor:pointer;font-size:12px;font-weight:500;transition:.3s;color:#555;font-family:inherit}
+.sort-btn:hover{border-color:#1a1a2e;color:#1a1a2e}
+.wa-share-btn{display:block;text-align:center;padding:12px;background:#25D366;color:#fff;border:none;border-radius:12px;text-decoration:none;font-size:14px;font-weight:700;transition:.3s;margin-top:16px;cursor:pointer}
+.wa-share-btn:hover{background:#128C7E}
+@media(max-width:600px){.products{grid-template-columns:repeat(2,1fr);gap:12px}.product-img{height:140px}.top-bar{padding:22px 15px}.top-bar h1{font-size:22px}.stat-card{padding:15px}.product-body{padding:12px}.product-price{font-size:17px}.modal-box{padding:20px;margin:10px}.sort-row{gap:6px}.sort-btn{font-size:11px;padding:6px 12px}.img-wrap{min-height:140px}.modal-img{height:160px}}</style>
 </head>
 <body>
 <div class="top-bar"><div class="logo"><svg viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#667eea"/><stop offset="100%" stop-color="#764ba2"/></linearGradient></defs><polygon points="28,2 50,15 50,41 28,54 6,41 6,15" fill="url(#lg)" stroke="#fff" stroke-width="1.5"/><polygon points="28,2 50,15 28,28 6,15" fill="rgba(255,255,255,.15)"/><polygon points="6,15 28,28 28,54 6,41" fill="rgba(0,0,0,.1)"/><text x="28" y="35" text-anchor="middle" fill="#fff" font-size="24" font-weight="900" font-family="Arial">أ</text></svg></div><div class="brand">أحلى براند</div><h1>أحلى براند</h1><p>تصفح واطلب عبر واتساب</p></div>
@@ -72,6 +80,7 @@ body{background:#f5f6fa;font-family:'Segoe UI',system-ui,-apple-system,sans-seri
 <div class="stat-card"><div class="stat-num">642</div><div class="stat-label">متوفر</div></div>
 </div>
 <input class="search-box" id="search" placeholder="ابحخ عن منتج..." oninput="fp()">
+<div class="sort-row"><button class="sort-btn" id="sort-btn" onclick="toggleSort('price')">ترتيب</button></div>
 <div class="categories" id="categories"></div>
 <div class="products" id="products"></div>
 </div>
@@ -6492,7 +6501,7 @@ const products = [
     {
         "stock":  340,
         "id":  "4932",
-        "category":  "مميز",
+        "category":  "تيست بمزاج ( عمولة مضاعفه )",
         "price":  660,
         "name":  "حذاء tommy k50 ( مخزن 16 )",
         "url":  "https://aff.ven-door.com/product/4932",
@@ -6502,7 +6511,7 @@ const products = [
     {
         "stock":  6087,
         "id":  "4926",
-        "category":  "مميز",
+        "category":  "تيست بمزاج ( عمولة مضاعفه )",
         "price":  510,
         "name":  "تيشيرت ياقه تومي صيفي STO4 ( مخـزن H7 )",
         "url":  "https://aff.ven-door.com/product/4926",
@@ -6512,7 +6521,7 @@ const products = [
     {
         "stock":  3281,
         "id":  "4849",
-        "category":  "مميز",
+        "category":  "تيست بمزاج ( عمولة مضاعفه )",
         "price":  579,
         "name":  "تيشيرت ياقه تومي خاص STO5 (مخـزن H7)",
         "url":  "https://aff.ven-door.com/product/4849",
@@ -6522,7 +6531,7 @@ const products = [
     {
         "stock":  400,
         "id":  "4796",
-        "category":  "مميز",
+        "category":  "تيست بمزاج ( عمولة مضاعفه )",
         "price":  620,
         "name":  "Nike Running Shoes SV109 ( مخزن 127 )",
         "url":  "https://aff.ven-door.com/product/4796",
@@ -6532,7 +6541,7 @@ const products = [
     {
         "stock":  372,
         "id":  "4795",
-        "category":  "مميز",
+        "category":  "تيست بمزاج ( عمولة مضاعفه )",
         "price":  630,
         "name":  "Adidas Running Men SV108 ( مخزن 127 )",
         "url":  "https://aff.ven-door.com/product/4795",
@@ -6542,7 +6551,7 @@ const products = [
     {
         "stock":  40,
         "id":  "4709",
-        "category":  "مميز",
+        "category":  "تيست بمزاج ( عمولة مضاعفه )",
         "price":  479,
         "name":  "بوكس بوكسر رجاليTommy Hilfiger (مخزنHB)",
         "url":  "https://aff.ven-door.com/product/4709",
@@ -6552,7 +6561,7 @@ const products = [
     {
         "stock":  75,
         "id":  "4528",
-        "category":  "مميز",
+        "category":  "تيست بمزاج ( عمولة مضاعفه )",
         "price":  679,
         "name":  "Puma WB Shoes SV103 ( مخزن 127 )",
         "url":  "https://aff.ven-door.com/product/4528",
@@ -6562,7 +6571,7 @@ const products = [
     {
         "stock":  110,
         "id":  "4527",
-        "category":  "مميز",
+        "category":  "تيست بمزاج ( عمولة مضاعفه )",
         "price":  679,
         "name":  "Puma Shoes SV102 ( مخزن 127 )",
         "url":  "https://aff.ven-door.com/product/4527",
@@ -6572,7 +6581,7 @@ const products = [
     {
         "stock":  44,
         "id":  "4380",
-        "category":  "مميز",
+        "category":  "تيست بمزاج ( عمولة مضاعفه )",
         "price":  579,
         "name":  "Nike Cortez SV89 ( مخزن 127 )",
         "url":  "https://aff.ven-door.com/product/4380",
@@ -6581,18 +6590,18 @@ const products = [
     }
 ];
 const WA_NUM = "201093456565";
-const TXT = {all:"الكل",no:"لا توجد منتجات",order:"مرحباً، أريد طلب:",prod:"المنتج",price:"السعر",link:"الرابط",in:"متوفر",out:"غير متوفر",rem:"متبقي ",only:" فقط",egp:"ج.م",btn:"طلب عبر واتساب",noImg:"لا توجد صورة",detail:"التفاصيل",specs:"المواصفات",sizesTitle:"المقاسات والألوان",szSize:"المقاس",szColor:"اللون",szStock:"المخزون"};
-var cats=['Men Fashion','Shoes','تصفيات','Gifts','cosmetics','Fashion','bags','Electronics','منتجات','حذاء جلد طبيعي','مميز'];
+const TXT = {all:"الكل",no:"لا توجد منتجات",order:"مرحباً، أريد طلب:",prod:"المنتج",price:"السعر",link:"الرابط",in:"متوفر",out:"غير متوفر",rem:"متبقي ",only:" فقط",egp:"ج.م",btn:"طلب عبر واتساب",noImg:"لا توجد صورة",detail:"التفاصيل",specs:"المواصفات",sizesTitle:"المقاسات والألوان",szSize:"المقاس",szColor:"اللون",szStock:"المخزون",shareWA:"مشاركة عبر واتساب",sold:"نفذ",sort:"ترتيب",sortLow:"السعر: من الأقل",sortHigh:"السعر: من الأعلى"};
+var cats=['Men Fashion','Shoes','تصفيات','Gifts','cosmetics','Fashion','bags','Electronics','منتجات','حذاء جلد طبيعي','تيست بمزاج ( عمولة مضاعفه )'];
+var _sort='',_sortAsc=true;
 function rc(){var c=document.getElementById("categories"),h='<button class="cat-btn active" onclick="fc(this,\'\')">'+TXT.all+'</button>';cats.forEach(function(ca){h+='<button class="cat-btn" onclick="fc(this,\''+ca.replace(/'/g,"\\'")+'\')">'+ca+'</button>'});c.innerHTML=h}
 function fc(b,c){document.querySelectorAll(".cat-btn").forEach(function(x){x.classList.remove("active")});b.classList.add("active");window.ac=c;fp()}
-function fp(){var q=document.getElementById("search").value.toLowerCase(),c=window.ac||"",f=products.filter(function(p){var n=p.name.toLowerCase().indexOf(q)>=0||p.enName.toLowerCase().indexOf(q)>=0,ct=!c||p.category===c;return n&&ct});rp(f)}
-function rp(list){if(!list.length){document.getElementById("products").innerHTML='<div style="text-align:center;padding:60px 20px;color:#ccc;font-size:16px">'+TXT.no+'</div>';return}var h="";list.forEach(function(p){var msg=encodeURIComponent(TXT.order+"\n"+TXT.prod+": "+p.name+"\n"+TXT.price+": "+p.price+" "+TXT.egp+"\n"+TXT.link+": "+p.url),wa="https://wa.me/"+WA_NUM+"?text="+msg,sc="stock-ok",st=TXT.in+": "+p.stock;if(p.stock===0){sc="stock-out";st=TXT.out}else if(p.stock<20){sc="stock-low";st=TXT.rem+" "+p.stock+" "+TXT.only}var im=p.image||"";var dt=(productDetails[p.id]&&productDetails[p.id].desc&&productDetails[p.id].desc.length>0)?'<button class="details-btn" onclick="showDetails(\''+p.id+'\')">'+TXT.detail+'</button>':'';h+='<div class="product-card"><img class="product-img" src="'+im+'" alt="'+p.name+'" loading="lazy" onerror="this.style.display=\'none\'"><div class="product-body"><div class="product-name">'+p.name+"</div>"+(p.enName?'<div class="product-en">'+p.enName+"</div>":"")+'<div class="product-flex"><span class="product-price">'+p.price+' <span style="font-size:13px;font-weight:400">'+TXT.egp+'</span></span><span class="product-stock '+sc+'">'+st+"</span></div>"+dt+'<a class="whatsapp-btn" href="'+wa+'" target="_blank">'+TXT.btn+"</a></div></div>"});document.getElementById("products").innerHTML=h}
-function showDetails(id){var p=products.find(function(x){return x.id===id});if(!p)return;var d=productDetails[id]||{};var h='<span class="modal-close" onclick="hideDetails()">&times;</span><div class="modal-title">'+p.name+'</div>'+(p.enName?'<div class="modal-en">'+p.enName+'</div>':'');if(d.desc&&d.desc.length>0){h+='<div class="modal-section"><h3>'+TXT.specs+'</h3><div class="modal-desc">'+d.desc+'</div></div>'}if(d.sizes&&d.sizes.length>2){var sz=typeof d.sizes==='string'?JSON.parse(d.sizes):d.sizes;if(sz.length>0){h+='<div class="modal-section"><h3>'+TXT.sizesTitle+'</h3><table class="modal-table"><thead><tr><th>'+TXT.szSize+'</th><th>'+TXT.szColor+'</th><th>'+TXT.szStock+'</th></tr></thead><tbody>';sz.forEach(function(s){h+='<tr><td>'+s.size+'</td><td>'+s.color+'</td><td>'+s.stock+'</td></tr>'});h+='</tbody></table></div>'}}document.getElementById('modal-content').innerHTML=h;document.getElementById('modal-overlay').classList.add('show')}
+function fp(){var q=document.getElementById("search").value.toLowerCase(),c=window.ac||"",f=products.filter(function(p){var n=p.name.toLowerCase().indexOf(q)>=0||p.enName.toLowerCase().indexOf(q)>=0,ct=!c||p.category===c;return n&&ct});if(_sort==='price'){f.sort(function(a,b){return _sortAsc?a.price-b.price:b.price-a.price})}rp(f)}
+function rp(list){if(!list.length){document.getElementById("products").innerHTML='<div style="text-align:center;padding:60px 20px;color:#ccc;font-size:16px">'+TXT.no+'</div>';return}var h="";list.forEach(function(p){var msg=encodeURIComponent(TXT.order+"\n"+TXT.prod+": "+p.name+"\n"+TXT.price+": "+p.price+" "+TXT.egp+"\n"+TXT.link+": "+p.url),wa="https://wa.me/"+WA_NUM+"?text="+msg,sc="stock-ok",st=TXT.in+": "+p.stock;if(p.stock===0){sc="stock-out";st=TXT.out}else if(p.stock<20){sc="stock-low";st=TXT.rem+" "+p.stock+" "+TXT.only}var ov=p.stock===0?'<div class="stock-overlay">'+TXT.sold+'</div>':'';var im=p.image||"";var dt=(productDetails[p.id]&&productDetails[p.id].desc&&productDetails[p.id].desc.length>0)?'<button class="details-btn" onclick="showDetails(\''+p.id+'\')">'+TXT.detail+'</button>':'';h+='<div class="product-card"><div class="img-wrap">'+ov+'<img class="product-img" src="'+im+'" alt="'+p.name+'" loading="lazy" onerror="this.style.display=\'none\'"><div class="product-body"><div class="product-name">'+p.name+"</div>"+(p.enName?'<div class="product-en">'+p.enName+"</div>":"")+'<div class="product-flex"><span class="product-price">'+p.price+' <span style="font-size:13px;font-weight:400">'+TXT.egp+'</span></span><span class="product-stock '+sc+'">'+st+"</span></div>"+dt+'<a class="whatsapp-btn" href="'+wa+'" target="_blank">'+TXT.btn+"</a></div></div></div>"});document.getElementById("products").innerHTML=h}
+function showDetails(id){var p=products.find(function(x){return x.id===id});if(!p)return;var d=productDetails[id]||{};var im=p.image||"";var h='<span class="modal-close" onclick="hideDetails()">&times;</span>'+(im?'<img class="modal-img" src="'+im+'" alt="'+p.name+'" onerror="this.style.display=\'none\'">':'')+'<div class="modal-title">'+p.name+'</div>'+(p.enName?'<div class="modal-en">'+p.enName+'</div>':'');if(d.desc&&d.desc.length>0){h+='<div class="modal-section"><h3>'+TXT.specs+'</h3><div class="modal-desc">'+d.desc+'</div></div>'}if(d.sizes&&d.sizes.length>2){var sz=typeof d.sizes==='string'?JSON.parse(d.sizes):d.sizes;if(sz.length>0){h+='<div class="modal-section"><h3>'+TXT.sizesTitle+'</h3><table class="modal-table"><thead><tr><th>'+TXT.szSize+'</th><th>'+TXT.szColor+'</th><th>'+TXT.szStock+'</th></tr></thead><tbody>';sz.forEach(function(s){h+='<tr><td>'+s.size+'</td><td>'+s.color+'</td><td>'+s.stock+'</td></tr>'});h+='</tbody></table></div>'}}var wamsg=encodeURIComponent(TXT.order+"\n"+TXT.prod+": "+p.name+"\n"+TXT.price+": "+p.price+" "+TXT.egp+"\n"+TXT.link+": "+p.url);h+='<a class="wa-share-btn" href="https://wa.me/'+WA_NUM+'?text='+wamsg+'" target="_blank">'+TXT.shareWA+'</a>';document.getElementById('modal-content').innerHTML=h;document.getElementById('modal-overlay').classList.add('show')}
 function hideDetails(){document.getElementById('modal-overlay').classList.remove('show')}
+function toggleSort(t){if(_sort===t){_sortAsc=!_sortAsc}else{_sort=t;_sortAsc=true}document.getElementById('sort-btn').textContent=(_sort==='price'?(_sortAsc?TXT.sortLow:TXT.sortHigh):TXT.sort);fp()}
 document.getElementById('modal-overlay').addEventListener('click',function(e){if(e.target===this)hideDetails()})
 rc();fp();
-var _b={},_dl=0;function loadDetails(d){for(var i in d)_b[i]=d[i];_dl++;if(_dl>=45){z()}}function z(){for(var i in _b){if(i.indexOf('__cont')>0){var b=i.slice(0,i.indexOf('__cont')),e=_b[i];if(e._cont&&_b[b]){if(e.desc)_b[b].desc+=e.desc;if(e.sizes){var a=JSON.parse(_b[b].sizes||'[]'),b2=JSON.parse(e.sizes);_b[b].sizes=JSON.stringify(a.concat(b2))}}}}for(var i in _b)if(i.indexOf('__cont')<0)productDetails[i]=_b[i];fp()}
-var dc=Array(45).fill().map(function(_,i){return'https://mohamedameer99999.github.io/ahla-brand-catalog/data/details_'+(i+1)+'.js'});
-dc.forEach(function(u){var s=document.createElement('script');s.src=u;s.onerror=function(){_dl++;if(_dl>=45){z()}};document.body.appendChild(s)});</script>
+(function(){var _b={},_dl=0,_dc=54;window.loadDetails=function(d){_dl++;Object.keys(d).forEach(function(k){_b[k]=d[k]});if(_dl>=_dc){Object.keys(_b).forEach(function(k){var ci=k.indexOf('__cont');if(ci>0){var b=k.substring(0,ci);if(_b[b]){if(_b[k].desc)_b[b].desc=(_b[b].desc||'')+_b[k].desc;if(_b[k].sizes)_b[b].sizes=_b[k].sizes}delete _b[k]}});Object.assign(productDetails,_b);fp()}};for(var i=1;i<=54;i++){var s=document.createElement('script');s.src='data/details_'+i+'.js';s.onerror=function(){_dl++};document.body.appendChild(s)}})();</script>
 </body>
 </html>
